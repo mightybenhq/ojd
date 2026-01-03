@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel | Oja-odan</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js"></script>
+</head>
+
+<body>
+
+<!-- ✅ HEADER (same as others) -->
+<header>
+  <div class="header-content">
+    <h1 class="logo">
+      <a href="home.html">[🏠]</a>
+    </h1>
+
+    <button class="menu-toggle" onclick="toggleMenu()">≡</button>
+
+    <div id="main-dropdown" class="notif-dropdown hidden">
+      <a href="home.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="groups.html">Groups</a>
+      <hr>
+      <a href="index.html" style="color:#ff416c;">Logout</a>
+    </div>
+  </div>
+</header>
+
+<!-- ✅ MAIN -->
+<main class="container">
+  <h2>🛡 Admin Dashboard</h2>
+
+  <section class="glass-card">
+    <h3>All Users</h3>
+    <div id="users-list">Loading users...</div>
+  </section>
+
+  <section class="glass-card">
+    <h3>Groups Pending Approval</h3>
+    <div id="groups-list">Loading groups...</div>
+  </section>
+</main>
+
+<!-- ✅ FOOTER -->
+<footer>
+  <div class="footer-nav">
+    <div class="nav-item"><a href="home.html">🏠</a></div>
+    <div class="nav-item active">🛡</div>
+    <div class="nav-item"><a href="profile.html">👤</a></div>
+  </div>
+</footer>
+
+<!-- Toggle -->
+<script>
+function toggleMenu() {
+  document.getElementById('main-dropdown').classList.toggle('hidden');
+}
+</script>
+
+<!-- 🔐 SECURITY -->
+<script type="module" src="js/authGuard.js"></script>
+
+<!-- 🧠 ADMIN LOGIC -->
+<script type="module" src="js/admin.js"></script>
+
+</body>
+</html>

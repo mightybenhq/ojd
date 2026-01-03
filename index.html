@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oja-odan | Login / Register</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Firebase COMPAT SDK (mobile + termux safe) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<!-- Firebase init (added in step 2) -->
+<script src="js/firebase.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="header-content">
+    <h1 class="logo"><a href="home.html">🏠</a></h1>Oja-odan
+
+    <!-- TOGGLE BUTTON -->
+    <button class="menu-toggle" onclick="toggleMenu()">=</button>
+
+    <!-- DROPDOWN MENU -->
+    <div id="main-dropdown" class="notif-dropdown hidden">
+      <a href="#" class="notif-item">Profile</a>
+      <a href="#" class="notif-item">Marketplace</a>
+      <a href="#" class="notif-item">Groups</a>
+      <a href="#" class="notif-item">Fun</a>
+      <a href="#" class="notif-item">Notifications</a>
+      <hr>
+      <a href="#" class="notif-item" style="color: #ff416c;">Games</a>
+    </div>
+  </div>
+</header>
+
+
+
+<main class="container">
+
+  <div class="glass-card" style="max-width:500px;margin:auto;padding:20px">
+
+    <!-- Toggle buttons -->
+    <div style="display:flex;gap:10px;margin-bottom:15px">
+      <button id="showLogin" class="secondary-btn" style="flex:1">Login</button>
+      <button id="showRegister" class="secondary-btn" style="flex:1">Register</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button type="submit" class="primary-btn">Login</button>
+    </form>
+
+    <!-- REGISTER FORM -->
+    <form id="registerForm" style="display:none">
+
+      <input type="text" id="regFirstName" placeholder="First Name" required>
+      <input type="text" id="regLastName" placeholder="Last Name" required>
+      <input type="text" id="regUsername" placeholder="Username" required>
+      <input type="email" id="regEmail" placeholder="Email Address" required>
+      <input type="text" id="regNumber" placeholder="Full Phone Number" required>
+      <input type="text" id="regAddress" placeholder="Address" required>
+
+      <!-- Sex / Gender Selection -->
+      <select id="regSex" required>
+        <option value="" disabled selected>Sex</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <select id="regGender" required>
+        <option value="" disabled selected>Gender Identity</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="non-binary">Non-binary</option>
+        <option value="other">Other</option>
+      </select>
+
+      <input type="password" id="regPassword" placeholder="Password" required>
+      <input type="password" id="regRetypePassword" placeholder="Retype Password" required>
+
+      <button type="submit" class="primary-btn">Register</button>
+    </form>
+<div class="marquee-container">
+  <div class="marquee-content">
+    <span>Welcome to Oja-odan, Yewa North, Ogun-state Website &nbsp; • &nbsp; </span>
+    <span>Welcome to Oja-odan, Yewa North, Ogun-state Website &nbsp; • &nbsp; </span>
+    <span>Welcome to Oja-odan, Yewa North, Ogun-state Website &nbsp; • &nbsp; </span>
+  </div>
+</div>
+
+<style>
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0, 100, 0, 0.1); /* Subtle Green for Ogun State */
+  backdrop-filter: blur(10px);
+  border-top: 2px solid #006400;
+  border-bottom: 2px solid #006400;
+  padding: 15px 0;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-block;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #004d00;
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+</style>
+
+  </div>
+</main>
+
+<footer>
+  <p style="text-align:center">© 2026 Oja-odan</p>
+</footer>
+
+<!-- Auth logic (added in step 3) -->
+<script src="js/auth.js"></script>
+
+<script>
+// Toggle between login/register forms
+document.getElementById("showLogin").onclick = () => {
+  document.getElementById("loginForm").style.display = "block";
+  document.getElementById("registerForm").style.display = "none";
+};
+document.getElementById("showRegister").onclick = () => {
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("registerForm").style.display = "block";
+};
+</script>
+
+<script>
+function toggleMenu() {
+  const dropdown = document.getElementById('main-dropdown');
+  dropdown.classList.toggle('hidden');
+}
+
+// Close dropdown if clicking outside
+window.onclick = function(event) {
+  if (!event.target.matches('.menu-toggle')) {
+    const dropdown = document.getElementById('main-dropdown');
+    if (!dropdown.classList.contains('hidden')) {
+      dropdown.classList.add('hidden');
+    }
+  }
+};
+</script>
+</body>
+</html>
